@@ -1,0 +1,15 @@
+/* bg: #242424 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (max-width: 374px) {
+    .hometext{
+        font-size: xxx-large;
+    }
+}
+@media (max-width: 297px) {
+    .hometext{
+        font-size: xx-large;
+    }
+}
