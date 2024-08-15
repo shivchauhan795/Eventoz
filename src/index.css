@@ -4,12 +4,13 @@
 @tailwind utilities;
 
 @media (max-width: 374px) {
-    .hometext{
+    .hometext {
         font-size: xxx-large;
     }
 }
+
 @media (max-width: 297px) {
-    .hometext{
+    .hometext {
         font-size: xx-large;
     }
 }

@@ -8,24 +8,43 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Dashboard from './components/Dashboard.jsx'
 import CreateEvent from './components/CreateEvent.jsx'
 import Login from './components/Login.jsx'
+import Register from './components/Register.jsx'
+import ProtectedRoutes from "./ProtectedRoutes.jsx"
+import PublicRoutes from './PublicRoutes.jsx'
 
 const router = createBrowserRouter([
+
   {
-    path: '/',
-    element: <><Navbar /><App /><Footer /></>
+    element: <ProtectedRoutes />, // Wrap protected routes with ProtectedRoutes
+    children: [
+      {
+        path: '/dashboard',
+        element: <><Navbar /><Dashboard /><Footer /></>,
+      },
+      {
+        path: '/createevent',
+        element: <><Navbar /><CreateEvent /><Footer /></>,
+      },
+    ],
   },
   {
-    path: '/dashboard',
-    element: <><Navbar /><Dashboard /><Footer /></>
+    element: <PublicRoutes />, // Wrap public routes with PublicRoutes
+    children: [
+      {
+        path: '/login',
+        element: <><Navbar /><Login /><Footer /></>
+      },
+      {
+        path: '/register',
+        element: <><Navbar /><Register /><Footer /></>
+      },
+      {
+        path: '/',
+        element: <><Navbar /><App /><Footer /></>
+      },
+    ],
   },
-  {
-    path: '/createevent',
-    element: <><Navbar /><CreateEvent /><Footer /></>
-  },
-  {
-    path: '/login',
-    element: <><Navbar /><Login /><Footer /></>
-  },
+
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(

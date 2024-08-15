@@ -3,7 +3,10 @@ import { MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import authMiddleware from './auth'
+import authMiddleware from './auth.js'
+import cors from 'cors'
+
+import bodyParser from 'body-parser'
 
 dotenv.config()
 
@@ -13,6 +16,9 @@ const dbName = 'eventoz'
 const app = express()
 const port = 3000
 client.connect()
+
+app.use(cors())
+app.use(bodyParser.json())
 
 
 // register 
@@ -47,6 +53,7 @@ app.post("/register", async (request, response) => {
             error,
         });
     }
+
 });
 
 //login
@@ -106,9 +113,9 @@ app.listen(port, () => {
 // free endpoint
 app.get("/free-endpoint", (request, response) => {
     response.json({ message: "You are free to access me anytime" });
-  });
-  
-  // authentication endpoint
-  app.get("/auth-endpoint",authMiddleware, (request, response) => {
+});
+
+// authentication endpoint
+app.get("/auth-endpoint", authMiddleware, (request, response) => {
     response.json({ message: "You are authorized to access me" });
-  });
+});

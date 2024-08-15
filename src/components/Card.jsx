@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Card = ({event}) => {
+const Card = ({ event }) => {
     return (
         <div>
             <div className='h-100 w-56 p-2 rounded-3xl border background_color card_border hover:scale-110 transition-all text-white'>
