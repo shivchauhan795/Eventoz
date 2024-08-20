@@ -4,7 +4,7 @@ import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
-export default function PublicRoutes() {
+export default function SemiPublicRoutes() {
     // Get token from cookies
     const token = cookies.get("TOKEN");
 

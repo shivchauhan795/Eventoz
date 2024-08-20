@@ -1,26 +1,19 @@
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 
-const authMiddleware = async (request, response, next) => {
-  try {
-    //   get the token from the authorization header
-    const token = await request.headers.authorization.split(" ")[1];
+const authMiddleware = (req, res, next) => {
+    const token = req.headers['authorization']?.split(' ')[1]; // Extract the token from the header
 
-    //check if the token matches the supposed origin
-    const decodedToken = await jwt.verify(token, "RANDOM-TOKEN");
+    if (!token) {
+        return res.status(403).send({ message: 'Token is missing!' });
+    }
 
-    // retrieve the user details of the logged in user
-    const user = await decodedToken;
-
-    // pass the user down to the endpoints here
-    request.user = user;
-
-    // pass down functionality to the endpoint
-    next();
-    
-  } catch (error) {
-    response.status(401).json({
-      error: new Error("Invalid request!"),
-    });
-  }
+    try {
+        const decoded = jwt.verify(token, 'RANDOM-TOKEN'); // Use the same secret as in your login
+        req.userId = decoded.userId; // Attach userId to the request object
+        next();
+    } catch (error) {
+        return res.status(401).send({ message: 'Invalid Tooken', error: error.message });
+    }
 };
+
 export default authMiddleware;

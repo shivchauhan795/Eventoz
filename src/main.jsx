@@ -10,10 +10,21 @@ import CreateEvent from './components/CreateEvent.jsx'
 import Login from './components/Login.jsx'
 import Register from './components/Register.jsx'
 import ProtectedRoutes from "./ProtectedRoutes.jsx"
-import PublicRoutes from './PublicRoutes.jsx'
+import SemiPublicRoutes from './SemiPublicRoutes.jsx'
+import ScanQR from './components/ScanQR.jsx'
+import CardDetail from './components/CardDetail.jsx'
+import DownloadQR from './components/DownloadQR.jsx'
+import EventRegistrationForm from './components/EventRegistrationForm.jsx'
 
 const router = createBrowserRouter([
-
+  {
+    path: '/eventregisterationform/:formId',
+    element: <><Navbar /><EventRegistrationForm /><Footer /></>,
+  },
+  {
+    path: '/downloadqr/:id',
+    element: <><Navbar /><DownloadQR /><Footer /></>,
+  },
   {
     element: <ProtectedRoutes />, // Wrap protected routes with ProtectedRoutes
     children: [
@@ -25,10 +36,18 @@ const router = createBrowserRouter([
         path: '/createevent',
         element: <><Navbar /><CreateEvent /><Footer /></>,
       },
+      {
+        path: '/card/:id',
+        element: <><Navbar /><CardDetail /><Footer /></>,
+      },
+      {
+        path: '/scanqr',
+        element: <><Navbar /><ScanQR /><Footer /></>
+      },
     ],
   },
   {
-    element: <PublicRoutes />, // Wrap public routes with PublicRoutes
+    element: <SemiPublicRoutes />, // Wrap semi public routes with SemiPublicRoutes
     children: [
       {
         path: '/login',

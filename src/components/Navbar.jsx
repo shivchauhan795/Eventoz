@@ -29,6 +29,8 @@ const Navbar = () => {
                     token ? (
                         <>
                             <Link to={"/dashboard"}>DASHBOARD</Link>
+                            <Link to={"/createevent"}>CREATE EVENT</Link>
+                            <Link to={"/scanqr"}>SCAN QR</Link>
                             <button onClick={handleLogout}>LOGOUT</button>
                         </>
 

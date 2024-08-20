@@ -12,7 +12,8 @@ const Card = ({ event }) => {
                 <p className='text-xs px-1 background_color'>{event.eventDesc}</p>
 
                 <h3 className='text-center uppercase p-2 background_color'>{new Date(event.date).toLocaleString()}</h3>
-                <h2 className='text-center uppercase p-1 background_color'>Total Participant Registered</h2>
+                <h2 className='text-center uppercase p-1 background_color'>Total Participant Registered: {event.registrationCount}</h2>
+                <h2 className='text-center uppercase p-1 background_color'>Total Participant Attended: {event.attendedCount}</h2>
 
 
             </div>
