@@ -4,15 +4,15 @@ import Cookies from 'universal-cookie';
 import ExcelJS from 'exceljs';
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 
 
 const cookies = new Cookies();
 
-dotenv.config()
-const backendURL = process.env.BACKEND_URL
+// dotenv.config()
 
 function CardDetail() {
+    const backendURL = 'https://eventoz-tau.vercel.app/'
     const { id } = useParams();
     const [cardData, setCardData] = useState(null);
     const [error, setError] = useState(null);

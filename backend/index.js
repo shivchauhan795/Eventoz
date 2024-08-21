@@ -11,7 +11,12 @@ import bodyParser from 'body-parser'
 dotenv.config()
 
 const mongourl = process.env.MONGO_URL
-const client = new MongoClient(mongourl)
+const client = new MongoClient(mongourl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    tls: true,  // Enable TLS
+    tlsInsecure: false,  // Ensure certificates are validated
+})
 const dbName = 'eventoz'
 const app = express()
 const port = 3000

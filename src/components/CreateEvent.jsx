@@ -4,15 +4,15 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "universal-cookie";
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 
-dotenv.config()
-const backendURL = process.env.BACKEND_URL
+// dotenv.config()
 
 const cookies = new Cookies();
 
 
 const CreateEvent = () => {
+    const backendURL = 'https://eventoz-tau.vercel.app/'
     const navigate = useNavigate()
     const [form, setform] = useState({ eventName: '', eventDesc: '', date: '', banner: '' })
 

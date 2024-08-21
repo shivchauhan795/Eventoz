@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams, useNavigate } from 'react-router-dom';
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 
-dotenv.config()
-const backendURL = process.env.BACKEND_URL
+// dotenv.config()
 
 const EventRegistrationForm = () => {
+    const backendURL = 'https://eventoz-tau.vercel.app/'
     const navigate = useNavigate();
     const { formId } = useParams(); // Retrieve the form ID from the URL
     const [form, setForm] = useState({ name: '', branch: '', college: '', semester: '', phoneno: '', email: '' });
