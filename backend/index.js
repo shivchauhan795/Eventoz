@@ -16,6 +16,7 @@ const client = new MongoClient(mongourl, {
     useUnifiedTopology: true,
     tls: true,  // Enable TLS
     tlsInsecure: false,  // Ensure certificates are validated
+    connectTimeoutMS: 10000,
 })
 const dbName = 'eventoz'
 const app = express()
