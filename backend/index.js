@@ -23,7 +23,9 @@ const app = express()
 const port = 3000
 client.connect()
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://eventoz.netlify.app'  // Replace with your frontend domain
+}));
 app.use(bodyParser.json())
 
 
