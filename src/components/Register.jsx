@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import dotenv from 'dotenv'
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
+
 const Register = () => {
     const navigate = useNavigate()
     const [user, setuser] = useState({ email: '', password: '', confirmpassword: '' })
@@ -13,7 +18,7 @@ const Register = () => {
                 alert('Password do not match!!')
                 return;
             }
-            const response = await fetch('http://localhost:3000/register', {
+            const response = await fetch(`${backendURL}register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -3,6 +3,10 @@ import Card from './Card'
 import ToggleButton from './ToggleButton'
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie'
+import dotenv from 'dotenv'
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
 
 const cookies = new Cookies()
 
@@ -14,7 +18,7 @@ const Dashboard = () => {
         const fetchEvents = async () => {
             try {
                 const token = cookies.get("TOKEN");
-                const response = await fetch('http://localhost:3000/myevents', {
+                const response = await fetch(`${backendURL}myevents`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -31,7 +35,7 @@ const Dashboard = () => {
                 // Fetch registration and attendance counts for each event
                 const eventsWithCounts = await Promise.all(data.events.map(async (event) => {
                     // Fetch registration count
-                    const registrationResponse = await fetch(`http://localhost:3000/event/${event.id}/registrations`, {
+                    const registrationResponse = await fetch(`${backendURL}event/${event.id}/registrations`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'
@@ -43,7 +47,7 @@ const Dashboard = () => {
                         : 0;
 
                     // Fetch attendance count
-                    const attendedResponse = await fetch(`http://localhost:3000/event/${event.id}/attended`, {
+                    const attendedResponse = await fetch(`${backendURL}event/${event.id}/attended`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'

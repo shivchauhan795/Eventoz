@@ -4,6 +4,10 @@ import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Cookies from "universal-cookie";
+import dotenv from 'dotenv'
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
 
 const cookies = new Cookies();
 
@@ -24,7 +28,7 @@ const CreateEvent = () => {
             const token = cookies.get("TOKEN");
             const eventDetails = { ...form, id: uuidv4() };
 
-            const response = await fetch('http://localhost:3000/createevent', {
+            const response = await fetch(`${backendURL}createevent`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

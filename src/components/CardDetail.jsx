@@ -4,8 +4,13 @@ import Cookies from 'universal-cookie';
 import ExcelJS from 'exceljs';
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import dotenv from 'dotenv'
+
 
 const cookies = new Cookies();
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
 
 function CardDetail() {
     const { id } = useParams();
@@ -23,7 +28,7 @@ function CardDetail() {
                 const token = cookies.get("TOKEN");
 
                 // Fetch the event details
-                const response = await fetch('http://localhost:3000/myevents', {
+                const response = await fetch(`${backendURL}myevents`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
@@ -44,7 +49,7 @@ function CardDetail() {
                     setCardData(card);
 
                     // Fetch the registration count for this event
-                    const registrationResponse = await fetch(`http://localhost:3000/event/${id}/registrations`, {
+                    const registrationResponse = await fetch(`${backendURL}event/${id}/registrations`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'
@@ -59,7 +64,7 @@ function CardDetail() {
                     }
 
                     // Fetch the attended count for this event
-                    const attendedResponse = await fetch(`http://localhost:3000/event/${id}/attended`, {
+                    const attendedResponse = await fetch(`${backendURL}event/${id}/attended`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'
@@ -74,7 +79,7 @@ function CardDetail() {
                     }
 
                     // Fetch the registered users for this event
-                    const userRegisteredResponse = await fetch(`http://localhost:3000/registeredusers/${id}`, {
+                    const userRegisteredResponse = await fetch(`${backendURL}registeredusers/${id}`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'
@@ -89,7 +94,7 @@ function CardDetail() {
                     }
 
                     // Fetch the attended users for this event
-                    const userAttendedResponse = await fetch(`http://localhost:3000/attendedusers/${id}`, {
+                    const userAttendedResponse = await fetch(`${backendURL}attendedusers/${id}`, {
                         method: 'GET',
                         headers: {
                             'Content-Type': 'application/json'

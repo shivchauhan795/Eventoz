@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from "universal-cookie";
+import dotenv from 'dotenv'
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
 
 const cookies = new Cookies();
 
@@ -17,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch(`${backendURL}login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

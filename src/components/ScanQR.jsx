@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Scanner } from '@yudiel/react-qr-scanner';
+import dotenv from 'dotenv'
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
 
 const ScanQR = () => {
   const [scannedValue, setScannedValue] = useState('');
@@ -11,7 +15,7 @@ const ScanQR = () => {
       setScannedValue(rawValue);
 
       try {
-        const response = await fetch('http://localhost:3000/updateAttendance', {
+        const response = await fetch(`${backendURL}updateAttendance`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

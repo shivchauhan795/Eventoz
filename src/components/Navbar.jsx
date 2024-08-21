@@ -18,7 +18,7 @@ const Navbar = () => {
         <div className='logo bg-slate-700 h-16 w-full flex flex-wrap items-center text-white px-20 justify-between'>
             <span className='text-xl flex items-center gap-2'>
                 <Link to={'/'}>
-                    <img src={"./assets/react.svg"} alt="" width={40} />
+                    {/* <img src={"./assets/react.svg"} alt="" width={40} /> */}
                     Eventoz
                 </Link>
             </span>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams, useNavigate } from 'react-router-dom';
+import dotenv from 'dotenv'
+
+dotenv.config()
+const backendURL = process.env.BACKEND_URL
 
 const EventRegistrationForm = () => {
     const navigate = useNavigate();
@@ -17,7 +21,7 @@ const EventRegistrationForm = () => {
         const newUserDetails = { ...form, id: uuidv4(), formId };
 
         try {
-            const response = await fetch('http://localhost:3000/eventregistereduser', {
+            const response = await fetch(`${backendURL}eventregistereduser`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
