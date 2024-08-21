@@ -24,7 +24,20 @@ const port = 3000
 client.connect()
 
 app.use(cors({
-    origin: 'https://eventoz.netlify.app'  // Replace with your frontend domain
+    origin: 'https://eventoz.netlify.app',  // Replace with your frontend domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Add any methods your API will use
+    allowedHeaders: ['Content-Type', 'Authorization']  // Add any headers your API will use
+}));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://eventoz.netlify.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+app.options('*', cors({
+    origin: 'https://eventoz.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(bodyParser.json())
 
