@@ -17,14 +17,7 @@ import DownloadQR from './components/DownloadQR.jsx'
 import EventRegistrationForm from './components/EventRegistrationForm.jsx'
 
 const router = createBrowserRouter([
-  {
-    path: '/eventregisterationform/:formId',
-    element: <><Navbar /><EventRegistrationForm /><Footer /></>,
-  },
-  {
-    path: '/downloadqr/:id',
-    element: <><Navbar /><DownloadQR /><Footer /></>,
-  },
+  
   {
     element: <ProtectedRoutes />, // Wrap protected routes with ProtectedRoutes
     children: [
@@ -43,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: '/scanqr',
         element: <><Navbar /><ScanQR /><Footer /></>
+      },
+      {
+        path: '/eventregisterationform/:formId',
+        element: <><Navbar /><EventRegistrationForm /><Footer /></>,
+      },
+      {
+        path: '/downloadqr/:id',
+        element: <><Navbar /><DownloadQR /><Footer /></>,
       },
     ],
   },
