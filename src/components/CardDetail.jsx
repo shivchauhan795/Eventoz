@@ -189,7 +189,7 @@ function CardDetail() {
     const handleCopyRegistrationLink = () => {
         const registrationLink = `${window.location.origin}/eventregisterationform/${id}`;
         navigator.clipboard.writeText(registrationLink)
-            .then(() => {
+        .then(() => {
                 toast('Registration link copied to clipboard!', {
                     position: "bottom-right",
                     autoClose: 2000,
@@ -200,7 +200,7 @@ function CardDetail() {
                     progress: undefined,
                     theme: "dark",
                 });
-                navigate("/eventregisterationform/${id}")
+                navigate(`/eventregisterationform/${id}`)
             })
             .catch(err => {
                 toast('Failed to copy the registration link!', {
