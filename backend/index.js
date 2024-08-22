@@ -21,16 +21,8 @@ const app = express()
 const port = 3000
 client.connect()
 
-// CORS configuration
-const corsOptions = {
-    origin: 'https://eventoz.netlify.app',  // Your frontend domain
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // If you need to include credentials (cookies, etc.)
-};
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Preflight requests
+app.use(cors());
 
 app.use(bodyParser.json())
 
