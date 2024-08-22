@@ -200,7 +200,7 @@ function CardDetail() {
                     progress: undefined,
                     theme: "dark",
                 });
-                navigate("${window.location.origin}/eventregisterationform/${id}")
+                navigate("/eventregisterationform/${id}")
             })
             .catch(err => {
                 toast('Failed to copy the registration link!', {
