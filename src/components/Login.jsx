@@ -10,7 +10,7 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 const Login = () => {
-  const backendURL = 'https://eventoz-tau.vercel.app/'
+  const backendURL = 'https://eventoz-backend.onrender.com/'
   const navigate = useNavigate();
   // const dispatch = useDispatch();
   const [user, setUser] = useState({ email: '', password: '' });

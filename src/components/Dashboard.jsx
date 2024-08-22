@@ -10,7 +10,7 @@ import Cookies from 'universal-cookie'
 const cookies = new Cookies()
 
 const Dashboard = () => {
-    const backendURL = 'https://eventoz-tau.vercel.app/'
+    const backendURL = 'https://eventoz-backend.onrender.com/'
     const [events, setEvents] = useState([])
     const [isCompleted, setIsCompleted] = useState(false)
 

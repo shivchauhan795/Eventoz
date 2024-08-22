@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // dotenv.config()
 
 const Register = () => {
-    const backendURL = 'https://eventoz-tau.vercel.app/'
+    const backendURL = 'https://eventoz-backend.onrender.com/'
     const navigate = useNavigate()
     const [user, setuser] = useState({ email: '', password: '', confirmpassword: '' })
 

@@ -12,7 +12,7 @@ const cookies = new Cookies();
 // dotenv.config()
 
 function CardDetail() {
-    const backendURL = 'https://eventoz-tau.vercel.app/'
+    const backendURL = 'https://eventoz-backend.onrender.com/'
     const { id } = useParams();
     const [cardData, setCardData] = useState(null);
     const [error, setError] = useState(null);

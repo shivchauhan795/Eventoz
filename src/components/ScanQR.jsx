@@ -5,7 +5,7 @@ import { Scanner } from '@yudiel/react-qr-scanner';
 // dotenv.config()
 
 const ScanQR = () => {
-  const backendURL = 'https://eventoz-tau.vercel.app/'
+  const backendURL = 'https://eventoz-backend.onrender.com/'
   const [scannedValue, setScannedValue] = useState('');
   const [userName, setUserName] = useState('');
 

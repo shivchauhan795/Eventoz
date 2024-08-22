@@ -12,7 +12,7 @@ const cookies = new Cookies();
 
 
 const CreateEvent = () => {
-    const backendURL = 'https://eventoz-tau.vercel.app/'
+    const backendURL = 'https://eventoz-backend.onrender.com/'
     const navigate = useNavigate()
     const [form, setform] = useState({ eventName: '', eventDesc: '', date: '', banner: '' })
 
