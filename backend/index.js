@@ -18,7 +18,7 @@ const client = new MongoClient(mongourl, {
 })
 const dbName = 'eventoz'
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000;
 await client.connect()
 
 
@@ -328,9 +328,9 @@ app.post('/updateAttendance', async (request, response) => {
 
 
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Example app listening on port ${port}`);
+});
 
 
 
