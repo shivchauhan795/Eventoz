@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie';
 import { useNavigate } from 'react-router-dom';
+import favicon from '../assets/favicon.png'
 
 const Navbar = () => {
     const cookies = new Cookies();
@@ -19,7 +20,7 @@ const Navbar = () => {
             <span className='text-xl flex items-center gap-2'>
                 <Link to={'/'}>
                     {/* <img src={"./assets/react.svg"} alt="" width={40} /> */}
-                    Eventoz
+                    <h1 className='text-2xl flex justify-center items-center gap-2'><img className='w-10' src={favicon} alt='favicon' />Eventoz</h1>
                 </Link>
             </span>
 
